@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/models/currency_model.dart';
+import 'package:flutter_application_1/providers/main_provider.dart';
 import 'package:flutter_application_1/utills/constants.dart';
+import 'package:flutter_application_1/utills/hive_util.dart';
 import 'package:flutter_application_1/utills/routes.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
-
-import 'providers/main_provider.dart';
-import 'utills/hive_util.dart';
 
 class ComparePage extends StatefulWidget {
   const ComparePage({Key? key}) : super(key: key);

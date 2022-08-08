@@ -1,11 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/models/currency_model.dart';
 import 'package:flutter_application_1/providers/main_provider.dart';
 import 'package:flutter_application_1/utills/constants.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
-
-import 'models/currency_model.dart';
 
 class CurrencyPage extends StatefulWidget {
   const CurrencyPage(this._listCurrency, this.topCur, this.bottomCur,
@@ -19,9 +18,7 @@ class CurrencyPage extends StatefulWidget {
   State<CurrencyPage> createState() => _CurrencyPageState();
 }
 
-class _CurrencyPageState extends State<CurrencyPage> {
-  // final List<CurrencyModel> _filterList = [];
-  // final TextEditingController _editingController = TextEditingController();
+class _CurrencyPageState extends State<CurrencyPage> {  
   @override
   void initState() {
     super.initState();
@@ -30,8 +27,7 @@ class _CurrencyPageState extends State<CurrencyPage> {
 
   @override
   void dispose() {
-    super.dispose();
-    // _editingController.dispose();
+    super.dispose();    
     context.read<MainProvider>().editingController.dispose();
   }
 
