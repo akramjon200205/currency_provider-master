@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/currency/compare_page.dart';
-import 'package:flutter_application_1/currency/currency_page.dart';
+
+import '../currency_screens/compare_page.dart';
+import '../currency_screens/currency_page.dart';
 
 class Routes {
   static const currencyPage = '/currencyPage';
