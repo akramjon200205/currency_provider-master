@@ -14,12 +14,21 @@ class ComparePage extends StatefulWidget {
   State<ComparePage> createState() => ComparePageState();
 }
 
-class ComparePageState extends State<ComparePage> with HiveUtil {
+class ComparePageState extends State<ComparePage> with HiveUtil {    
   @override
   void initState() {
     super.initState();
     context.read<MainProvider>().editingControllerTopfunc();
     context.read<MainProvider>().editingControllerBottomFunc();
+  }
+
+  @override
+  void dispose() {    
+    context.read<MainProvider>().editingControllerTop.dispose();
+    context.read<MainProvider>().editingControllerBottom.dispose();
+    context.read<MainProvider>().topFocus.dispose();
+    context.read<MainProvider>().bottomFocus.dispose();
+    super.dispose();
   }
 
   @override
