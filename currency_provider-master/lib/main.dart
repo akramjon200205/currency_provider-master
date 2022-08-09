@@ -8,7 +8,9 @@ import 'package:provider/provider.dart';
 Future<void> main(List<String> args) async {
   await Hive.initFlutter();
   Hive.registerAdapter<CurrencyModel>(CurrencyModelAdapter());
-  runApp(const MyApp());
+  runApp(
+    const MyApp(),
+  );
 }
 
 class MyApp extends StatelessWidget {
