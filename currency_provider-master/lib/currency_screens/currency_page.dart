@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/models/currency_model.dart';
-import 'package:flutter_application_1/providers/main_provider.dart';
+import 'package:flutter_application_1/providers/currency_provider.dart';
 import 'package:flutter_application_1/utills/constants.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';

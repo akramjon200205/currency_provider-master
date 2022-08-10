@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/models/currency_model.dart';
-import 'package:flutter_application_1/providers/main_provider.dart';
+import 'package:flutter_application_1/providers/currency_provider.dart';
 import 'package:flutter_application_1/utills/routes.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
