@@ -10,7 +10,7 @@ import '../models/currency_model.dart';
 import '../utills/constants.dart';
 import '../utills/hive_util.dart';
 
-class MainProvider extends ChangeNotifier with HiveUtil {
+class CurrencyProvider extends ChangeNotifier with HiveUtil {
   final TextEditingController editingControllerTop = TextEditingController();
   final TextEditingController editingControllerBottom = TextEditingController();
   final TextEditingController editingController = TextEditingController();
@@ -21,22 +21,12 @@ class MainProvider extends ChangeNotifier with HiveUtil {
 
   List<CurrencyModel> listCurrency = [];
 
-  CurrencyModel? topCur;
-  CurrencyModel? bottomCur;
-
-  // @override
-  // void notifyListeners() {
-  //   super.notifyListeners();
-  //   editingControllerTop.notifyListeners();
-  //   editingControllerBottom.notifyListeners();
-  //   editingController.notifyListeners();
-  //   topFocus.notifyListeners();
-  //   bottomFocus.notifyListeners();
-  // }
+  late CurrencyModel topCur;
+  late CurrencyModel bottomCur;  
 
   void exchange() {
-    var model = topCur?.copyWith();
-    topCur = bottomCur?.copyWith();
+    var model = topCur.copyWith();
+    topCur = bottomCur.copyWith();
     bottomCur = model;
     editingControllerTop.clear();
     editingControllerBottom.clear();
@@ -67,8 +57,8 @@ class MainProvider extends ChangeNotifier with HiveUtil {
     editingControllerTop.addListener(() {
       if (topFocus.hasFocus) {
         if (editingControllerTop.text.isNotEmpty) {
-          double sum = double.parse(topCur?.rate ?? '0') /
-              double.parse(bottomCur?.rate ?? '0') *
+          double sum = double.parse(topCur.rate ?? '0') /
+              double.parse(bottomCur.rate ?? '0') *
               double.parse(editingControllerTop.text);
           editingControllerBottom.text = sum.toStringAsFixed(2);
         } else {
@@ -83,8 +73,8 @@ class MainProvider extends ChangeNotifier with HiveUtil {
     editingControllerBottom.addListener(() {
       if (bottomFocus.hasFocus) {
         if (editingControllerBottom.text.isNotEmpty) {
-          double sum = double.parse(bottomCur?.rate ?? '0') /
-              double.parse(topCur?.rate ?? '0') *
+          double sum = double.parse(bottomCur.rate ?? '0') /
+              double.parse(topCur.rate ?? '0') *
               double.parse(editingControllerBottom.text);
           editingControllerTop.text = sum.toStringAsFixed(2);
         } else {
@@ -109,7 +99,7 @@ class MainProvider extends ChangeNotifier with HiveUtil {
               bottomCur = model;
             }
             listCurrency.add(model);
-            await saveBox<String>(dateBox, topCur?.date ?? "", key: dateKey);
+            await saveBox<String>(dateBox, topCur.date ?? "", key: dateKey);
             await saveBox<List<CurrencyModel>>(currencyBox, listCurrency,
                 key: currencyListKey);
           }
@@ -146,5 +136,12 @@ class MainProvider extends ChangeNotifier with HiveUtil {
     }
     notifyListeners();
     return true;
+  }
+
+  void onDispose() {
+    editingControllerTop.dispose();
+    editingControllerBottom.dispose();
+    topFocus.dispose();
+    bottomFocus.dispose();
   }
 }

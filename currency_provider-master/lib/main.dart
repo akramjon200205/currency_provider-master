@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(
-          create: (_) => MainProvider(),
+          create: (_) => CurrencyProvider(),
         ),
       ],
       child: MaterialApp(

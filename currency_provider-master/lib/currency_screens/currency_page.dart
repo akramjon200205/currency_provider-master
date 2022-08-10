@@ -22,18 +22,18 @@ class _CurrencyPageState extends State<CurrencyPage> {
   @override
   void initState() {
     super.initState();
-    context.read<MainProvider>().filterList.addAll(widget._listCurrency);
+    context.read<CurrencyProvider>().filterList.addAll(widget._listCurrency);
   }
 
   @override
   void dispose() {
     super.dispose();    
-    context.read<MainProvider>().editingController.dispose();
+    context.read<CurrencyProvider>().editingController.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<MainProvider>(
+    return Consumer<CurrencyProvider>(
       builder: (context, provider, child) {
         return Scaffold(
           appBar: AppBar(
@@ -91,8 +91,8 @@ class _CurrencyPageState extends State<CurrencyPage> {
               shrinkWrap: true,
               itemBuilder: ((context, index) {
                 var model = provider.listCurrency[index];
-                bool isChoosen = provider.topCur?.ccy == model.ccy ||
-                    provider.bottomCur?.ccy == model.ccy;
+                bool isChoosen = provider.topCur.ccy == model.ccy ||
+                    provider.bottomCur.ccy == model.ccy;
 
                 return ListTile(
                   tileColor: const Color(0xff2d334d),
